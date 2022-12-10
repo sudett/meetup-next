@@ -1,0 +1,19 @@
+.navbar {
+  background-color: #960019;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 110rem;
+  margin: 0 auto;
+  color: #fff;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+}
+
+.list {
+  display: flex;
+  gap: 2rem;
+}
