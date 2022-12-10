@@ -1,5 +1,5 @@
 .card {
-  box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0.2rem 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   overflow: hidden;
   margin-bottom: 2rem;
@@ -27,4 +27,5 @@
   padding: 0.75rem 2rem;
   outline: none;
   border: 1px solid gray;
+  cursor: pointer;
 }

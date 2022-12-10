@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 
 import styles from "./MeetupItem.module.css";
 
-const MeetupItem = ({ img, id, title, address }) => {
+const MeetupItem = ({ img, id, title, address, description }) => {
   const router = useRouter();
 
   return (
@@ -11,6 +11,7 @@ const MeetupItem = ({ img, id, title, address }) => {
       <div className={styles.content}>
         <h2 className={styles.title}>{title}</h2>
         <address>{address}</address>
+        <p>{description}</p>
         <button className={styles.btn} onClick={() => router.push(`/${id}`)}>
           Show Details
         </button>

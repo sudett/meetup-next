@@ -12,12 +12,11 @@ const MeetupDetail = () => {
   const { meetups } = useMeetupContext();
 
   const targetMeetup = meetups.find((meetup) => meetup.id === +meetupId);
-  console.log(targetMeetup);
 
   return (
     <>
       {targetMeetup && (
-        <div>
+        <div className={styles.card}>
           {" "}
           <img
             className={styles.img}
@@ -27,6 +26,7 @@ const MeetupDetail = () => {
           <div className={styles.content}>
             <h2 className={styles.title}>{targetMeetup.title}</h2>
             <address>{targetMeetup.address}</address>
+            <p>{targetMeetup.description}</p>
           </div>
         </div>
       )}
