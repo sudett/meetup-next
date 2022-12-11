@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import mongoConnect from "../utils/mongoConnect";
 
 import MeetupList from "../components/meetup-list/MeetupList";
 
@@ -12,13 +12,7 @@ const Meetups = ({ meetups }) => {
 
 export async function getStaticProps() {
   try {
-    const client = await MongoClient.connect(
-      `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.tkxgncb.mongodb.net/?retryWrites=true&w=majority`
-    );
-
-    const db = client.db();
-
-    const meetupsCollection = db.collection("meetups");
+    const { meetupsCollection, client } = await mongoConnect();
 
     const meetups = await meetupsCollection.find().toArray();
 
