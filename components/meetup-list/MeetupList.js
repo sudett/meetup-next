@@ -2,8 +2,8 @@ import MeetupItem from "../meetup-item/MeetupItem";
 
 import { useMeetupContext } from "../../contexts/MeetupContext";
 
-const MeetupList = () => {
-  const { meetups } = useMeetupContext();
+const MeetupList = ({ meetups }) => {
+  // const { meetups } = useMeetupContext();
 
   return (
     <div>
