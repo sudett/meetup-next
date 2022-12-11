@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import mongoConnect from "../utils/mongoConnect";
 
 import MeetupList from "../components/meetup-list/MeetupList";
@@ -5,6 +7,10 @@ import MeetupList from "../components/meetup-list/MeetupList";
 const Meetups = ({ meetups }) => {
   return (
     <div>
+      <Head>
+        <meta name="description" content="A list of meetups" />
+        <title>Meetups</title>
+      </Head>
       <MeetupList meetups={meetups} />
     </div>
   );

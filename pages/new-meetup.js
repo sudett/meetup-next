@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, Fragment } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 import { useMeetupContext } from "../contexts/MeetupContext";
@@ -40,12 +41,7 @@ const NewMeetup = () => {
 
     dispatch({
       type: "add-meetup",
-      payload: {
-        title: titleRef.current.value,
-        address: addressRef.current.value,
-        img: imageRef.current.value,
-        description: descriptionRef.current.value,
-      },
+      payload: meetupData,
     });
 
     titleRef.current.value = "";
@@ -57,43 +53,59 @@ const NewMeetup = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={submitHandler}>
-      <div className={styles.group}>
-        <label className={styles.label} htmlFor="title">
-          Meetup Title
-        </label>
-        <input className={styles.input} type="text" id="title" ref={titleRef} />
-      </div>
-      <div className={styles.group}>
-        <label className={styles.label} htmlFor="address">
-          Meetup Address
-        </label>
-        <input
-          className={styles.input}
-          type="text"
-          id="address"
-          ref={addressRef}
-        />
-      </div>
-      <div className={styles.group}>
-        <label className={styles.label} htmlFor="image">
-          Meetup Image
-        </label>
-        <input className={styles.input} type="text" id="image" ref={imageRef} />
-      </div>
-      <div className={styles.group}>
-        <label className={styles.label} htmlFor="description">
-          Meetup Description
-        </label>
-        <textarea
-          className={styles.input}
-          id="description"
-          rows={5}
-          ref={descriptionRef}
-        />
-      </div>
-      <button className={styles.btn}>Add Meetup</button>
-    </form>
+    <Fragment>
+      <Head>
+        <meta name="description" content="Add your own meetup" />
+        <title>New Meetup</title>
+      </Head>
+      <form className={styles.form} onSubmit={submitHandler}>
+        <div className={styles.group}>
+          <label className={styles.label} htmlFor="title">
+            Meetup Title
+          </label>
+          <input
+            className={styles.input}
+            type="text"
+            id="title"
+            ref={titleRef}
+          />
+        </div>
+        <div className={styles.group}>
+          <label className={styles.label} htmlFor="address">
+            Meetup Address
+          </label>
+          <input
+            className={styles.input}
+            type="text"
+            id="address"
+            ref={addressRef}
+          />
+        </div>
+        <div className={styles.group}>
+          <label className={styles.label} htmlFor="image">
+            Meetup Image
+          </label>
+          <input
+            className={styles.input}
+            type="text"
+            id="image"
+            ref={imageRef}
+          />
+        </div>
+        <div className={styles.group}>
+          <label className={styles.label} htmlFor="description">
+            Meetup Description
+          </label>
+          <textarea
+            className={styles.input}
+            id="description"
+            rows={5}
+            ref={descriptionRef}
+          />
+        </div>
+        <button className={styles.btn}>Add Meetup</button>
+      </form>
+    </Fragment>
   );
 };
 

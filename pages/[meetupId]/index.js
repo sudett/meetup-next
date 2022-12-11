@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import { ObjectId } from "mongodb";
 
@@ -19,6 +20,10 @@ const MeetupDetail = ({ targetMeetup }) => {
 
   return (
     <>
+      <Head>
+        <meta name="description" content={targetMeetup.desc} />
+        <title>{targetMeetup.title}</title>
+      </Head>
       {targetMeetup && (
         <div className={styles.card}>
           {" "}
