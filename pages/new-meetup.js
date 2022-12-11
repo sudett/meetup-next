@@ -14,8 +14,30 @@ const NewMeetup = () => {
   const imageRef = useRef(null);
   const descriptionRef = useRef(null);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+
+    const meetupData = {
+      title: titleRef.current.value,
+      address: addressRef.current.value,
+      img: imageRef.current.value,
+      desc: descriptionRef.current.value,
+    };
+
+    try {
+      const response = await fetch("/api/new-meetup", {
+        method: "POST",
+        body: JSON.stringify(meetupData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+    } catch (err) {
+      console.log(err);
+    }
+
     dispatch({
       type: "add-meetup",
       payload: {
@@ -31,7 +53,7 @@ const NewMeetup = () => {
     imageRef.current.value = "";
     descriptionRef.current.value = "";
 
-    router.push("/");
+    router.replace("/");
   };
 
   return (
